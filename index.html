@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pool Scorer</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="setup">
+        <div class="form-wrapper">
+            <h1>Pool Scorer</h1>
+            <div class="row"><label for="player1">Player 1</label><input id="player1"><span>(Breaks First)</span></div>
+            <div class="row"><label for="player2">Player 2</label><input id="player2"></div>
+            <div class="row buttons-row"><button class="button" id="start">Start Game</button></div>
+        </div>
+    </div>
+    <div id="score" style="display:none;">
+        <div id="turnToBreak"><div><span class="name" data-player="player1"></span> to break</div></div>
+        <div id="endGame">✖</div>
+        <div id="player1Score" class="score-wrapper"><div class='player-name'></div><div class="score"></div><div class="undo" data-player="player1" style="opacity: 0;"><button class="button">Undo</button></div></div>
+        <div id="player2Score" class="score-wrapper"><div class='player-name'></div><div class="score"></div><div class="undo" data-player="player2" style="opacity: 0;"><button class="button">Undo</button></div></div>
+    </div>
+    <div id="finalScore" style="display: none;">
+        <div>
+            <div class='text'>Final Score</div>
+            <div class='text' id="finalScoreText"></div>
+            <div class="buttons"><button id="endGameForReal">End Game</button><button id="cancelEndGame">Keep Playing</button></div>
+        </div>
+    </div>
+	<script src="main.js"></script>
+  </body>
+</html>
