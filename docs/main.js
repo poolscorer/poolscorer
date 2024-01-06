@@ -13,6 +13,11 @@ document.getElementById("start").addEventListener("click", function() {
    let toBreak=document.getElementById("turnToBreak").querySelector(".name");
    toBreak.dataset.player="player1";
    toBreak.innerHTML=document.getElementById("player1").value;
+   let el = document.documentElement;
+   let rfs = el.requestFullscreen;
+   if(typeof rfs!="undefined" && rfs){
+     rfs.call(el);
+   }
    document.getElementById("setup").style.display="none";
    document.getElementById("score").style.display="flex";
    save();
@@ -46,6 +51,9 @@ document.getElementById("endGameForReal").addEventListener("click", function() {
    document.getElementById("player1").value=document.getElementById("player2").value;
    document.getElementById("player2").value=p1;
 
+   if (document.fullscreenElement) {
+      document.exitFullscreen();
+   }
    document.getElementById("finalScore").style.display="none";
    document.getElementById("setup").style.display="flex";
 
