@@ -40,6 +40,12 @@ document.getElementById("endGameForReal").addEventListener("click", function() {
       window.localStorage.setItem("poolScoreStore", JSON.stringify(current));
 
    }
+
+   let p1=document.getElementById("player1").value;
+
+   document.getElementById("player1").value=document.getElementById("player2").value;
+   document.getElementById("player2").value=p1;
+
    document.getElementById("finalScore").style.display="none";
    document.getElementById("setup").style.display="flex";
 
@@ -117,14 +123,14 @@ function load() {
    try {
       let current= JSON.parse(window.localStorage.getItem("poolScoreStore"));
       if (current !== null) {
+         console.log("Current is ",current);
 
-         document.getElementById("player1").value=current.player2.name;
-         document.getElementById("player2").value=current.player1.name;
+         if (current.status === "playing") {
+            document.getElementById("player1").value=current.player1.name;
+            document.getElementById("player2").value=current.player2.name;
 
-         if (current.status==="playing") {
             document.getElementById("turnToBreak").querySelector(".name").dataset.player=current.toBreak;
-            let currToBreak=current.toBreak==="player1"?current.player1.name:current.player2.name;
-            document.getElementById("turnToBreak").querySelector(".name").innerHTML=currToBreak;
+            document.getElementById("turnToBreak").querySelector(".name").innerHTML=current.toBreak==="player1"?current.player1.name:current.player2.name;
             let p1=document.getElementById("player1Score");
             let p2=document.getElementById("player2Score");
 
@@ -135,6 +141,11 @@ function load() {
             p2.querySelector(".score").innerHTML=current.player2.score;
             document.getElementById("setup").style.display="none";
             document.getElementById("score").style.display="flex";
+         }
+         else {
+            console.log("Game is ended");
+            document.getElementById("player1").value=current.player2.name;
+            document.getElementById("player2").value=current.player1.name;
          }
       }
    }
