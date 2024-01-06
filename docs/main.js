@@ -131,7 +131,6 @@ function load() {
    try {
       let current= JSON.parse(window.localStorage.getItem("poolScoreStore"));
       if (current !== null) {
-         console.log("Current is ",current);
 
          if (current.status === "playing") {
             document.getElementById("player1").value=current.player1.name;
@@ -147,11 +146,14 @@ function load() {
 
             p1.querySelector(".score").innerHTML=current.player1.score;
             p2.querySelector(".score").innerHTML=current.player2.score;
+            let rfs = el.requestFullscreen;
+            if(typeof rfs!="undefined" && rfs){
+              rfs.call(el);
+            }
             document.getElementById("setup").style.display="none";
             document.getElementById("score").style.display="flex";
          }
          else {
-            console.log("Game is ended");
             document.getElementById("player1").value=current.player2.name;
             document.getElementById("player2").value=current.player1.name;
          }
