@@ -110,7 +110,6 @@ function save() {
    currentGame.player2.name=document.getElementById("player2").value;
    currentGame.player2.score=document.getElementById("player2Score").querySelector(".score").innerHTML;
    currentGame.status="playing";
-   console.log("Save",currentGame);
    window.localStorage.setItem("poolScoreStore", JSON.stringify(currentGame));
 }
 
@@ -119,13 +118,12 @@ function load() {
       let current= JSON.parse(window.localStorage.getItem("poolScoreStore"));
       if (current !== null) {
 
-         document.getElementById("player1").value=current.player1.name;
-         document.getElementById("player2").value=current.player2.name;
+         document.getElementById("player1").value=current.player2.name;
+         document.getElementById("player2").value=current.player1.name;
 
          if (current.status==="playing") {
             document.getElementById("turnToBreak").querySelector(".name").dataset.player=current.toBreak;
             let currToBreak=current.toBreak==="player1"?current.player1.name:current.player2.name;
-            console.log(currToBreak, current);
             document.getElementById("turnToBreak").querySelector(".name").innerHTML=currToBreak;
             let p1=document.getElementById("player1Score");
             let p2=document.getElementById("player2Score");
