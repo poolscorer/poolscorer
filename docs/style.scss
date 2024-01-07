@@ -3,10 +3,19 @@ html, body {
   padding:0;
   height: 100%;
 }
+.github {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  img {
+    width: 1.5em;
+  }
+}
 #setup {
   padding: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   h1 {
     margin: 0.4em 0;
   }
@@ -173,7 +182,7 @@ button {
   }
 }
 
-@media (orientation: portrait) {
+@media screen and (min-height: 80vw) {
   #score {
     flex-direction: column;
     .score-wrapper {
