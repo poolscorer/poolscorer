@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pool Scorer</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
     <link href="favicon.ico" rel="icon" type="image/x-icon">
   </head>
   <body>
@@ -17,7 +17,14 @@
             <div class="row buttons-row"><button class="button" id="start">Start Game</button></div>
         </div>
     </div>
+    <div id="reload" style="display:none;">
+        <div>
+            <div class="text">Saved game found.</div>
+            <div class="buttons"><button id="continueLoadedGame">Continue Game</button><button id="cancelLoadedGame">Cancel Game</button></div>
+        </div>
+    </div>
     <div id="score" style="display:none;">
+
         <div id="turnToBreak"><div><span class="name" data-player="player1"></span> to break</div></div>
         <div id="endGame">&times;</div>
         <div id="player1Score" class="score-wrapper"><div class='player-name'></div><div class="score"></div><div class="undo" data-player="player1" style="opacity: 0;"><button class="button">Undo</button></div></div>
@@ -30,6 +37,6 @@
             <div class="buttons"><button id="endGameForReal">End Game</button><button id="cancelEndGame">Keep Playing</button></div>
         </div>
     </div>
-	<script src="main.js?v=1"></script>
+	<script src="main.js?v=2"></script>
   </body>
 </html>
