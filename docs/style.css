@@ -46,7 +46,7 @@ html, body {
 #turnToBreak > div {
   position: relative;
   left: -50%;
-  background: rgba(255, 255, 255, 0.8);
+  background: #d5ded0;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
