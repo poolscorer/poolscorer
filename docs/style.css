@@ -141,7 +141,7 @@ button {
 }
 
 @media (max-width: 800px) {
-  #finalScore > div .text {
+  #finalScore > div .text, #reload .text {
     font-size: 3em;
   }
 }
