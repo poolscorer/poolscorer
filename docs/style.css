@@ -146,6 +146,9 @@ button {
   #finalScore > div .text, #reload > div .text {
     font-size: 3em;
   }
+  #finalScore > div button, #reload > div button {
+    font-size: 1.4em;
+  }
 }
 @media (orientation: portrait) {
   #score {
