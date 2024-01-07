@@ -70,9 +70,12 @@ document.getElementById("player2Score").addEventListener("click", function() {
 let undos=document.querySelectorAll(".undo");
 for (let undo of undos) {
    undo.addEventListener("click", function(e) {
+      console.log(e.target);
       e.stopPropagation();
-      updateBreak();
-      decrementScore(this.dataset.player);
+      if (e.target.classList.contains("button")) {
+         updateBreak();
+         decrementScore(this.dataset.player);
+      }
    });
 }
 
