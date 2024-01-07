@@ -21,13 +21,19 @@ html, body {
   align-items: center;
   margin-bottom: 0.3em;
 }
-.form-wrapper .row label {
-  min-width: 4em;
+.form-wrapper .row label, .form-wrapper .row label > span {
+  min-width: 5.5em;
 }
-.form-wrapper .row input {
+.form-wrapper .row label > span {
+  display: inline-block;
+}
+.form-wrapper .row input[type=checkbox] {
+  margin-left: 0;
+}
+.form-wrapper .row input[type=text] {
   width: 8em;
 }
-.form-wrapper .row span {
+.form-wrapper .row > span {
   margin-left: 0.5em;
 }
 
