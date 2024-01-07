@@ -20,13 +20,19 @@ html, body {
     display: flex;
     align-items: center;
     margin-bottom: 0.3em;
-    label {
-      min-width: 4em;
+    label, label>span {
+      min-width: 5.5em;
     }
-    input {
+    label>span {
+      display: inline-block;
+    }
+    input[type=checkbox] {
+      margin-left:0;
+    }
+    input[type=text] {
       width: 8em;
     }
-    span {
+    >span {
       margin-left: 0.5em;
     }
   }

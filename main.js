@@ -13,10 +13,12 @@ document.getElementById("start").addEventListener("click", function() {
    let toBreak=document.getElementById("turnToBreak").querySelector(".name");
    toBreak.dataset.player="player1";
    toBreak.innerHTML=document.getElementById("player1").value;
-   let el = document.documentElement;
-   let rfs = el.requestFullscreen;
-   if(typeof rfs!="undefined" && rfs){
-     rfs.call(el);
+   if (document.getElementById("fullScreen").checked) {
+      let el = document.documentElement;
+      let rfs = el.requestFullscreen;
+      if(typeof rfs!="undefined" && rfs){
+        rfs.call(el);
+      }
    }
    document.getElementById("setup").style.display="none";
    document.getElementById("score").style.display="flex";
@@ -41,10 +43,12 @@ document.getElementById("cancelEndGame").addEventListener("click", function() {
 
 });
 document.getElementById("continueLoadedGame").addEventListener("click", function() {
-   let el = document.documentElement;
-   let rfs = el.requestFullscreen;
-   if(typeof rfs!="undefined" && rfs){
-     rfs.call(el);
+   if (document.getElementById("fullScreen").checked) {
+      let el = document.documentElement;
+      let rfs = el.requestFullscreen;
+      if(typeof rfs!="undefined" && rfs){
+        rfs.call(el);
+      }
    }
    document.getElementById("reload").style.display="none";
    document.getElementById("score").style.display="flex";
@@ -137,6 +141,7 @@ function save() {
    currentGame.player2.name=document.getElementById("player2").value;
    currentGame.player2.score=document.getElementById("player2Score").querySelector(".score").innerHTML;
    currentGame.gameStatus="playing";
+   currentGame.fullScreen=document.getElementById("fullScreen").checked;
    window.localStorage.setItem("poolScoreStore", JSON.stringify(currentGame));
 }
 
@@ -148,6 +153,7 @@ function load() {
 
             document.getElementById("player1").value=current.player1.name;
             document.getElementById("player2").value=current.player2.name;
+            document.getElementById("fullScreen").checked=current.fullScreen;
 
             document.getElementById("turnToBreak").querySelector(".name").dataset.player=current.toBreak;
             document.getElementById("turnToBreak").querySelector(".name").innerHTML=current.toBreak==="player1"?current.player1.name:current.player2.name;
@@ -167,6 +173,8 @@ function load() {
          else {
             document.getElementById("player1").value=current.player2.name;
             document.getElementById("player2").value=current.player1.name;
+            document.getElementById("fullScreen").checked=current.fullScreen;
+
          }
       }
    }
