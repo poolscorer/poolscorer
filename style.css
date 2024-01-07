@@ -94,6 +94,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 #finalScore > div #finalScoreText, #reload > div #finalScoreText {
   font-weight: bold;
@@ -141,7 +142,7 @@ button {
 }
 
 @media (max-width: 800px) {
-  #finalScore > div .text, #reload .text {
+  #finalScore > div .text, #reload > div .text {
     font-size: 3em;
   }
 }
