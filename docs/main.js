@@ -22,7 +22,6 @@ document.getElementById("start").addEventListener("click", function() {
    document.getElementById("score").style.display="flex";
    save();
 });
-
 document.getElementById("endGame").addEventListener("click", function() {
    let p1=document.getElementById("player1").value;
    let p1Score=parseInt(document.getElementById("player1Score").querySelector(".score").innerHTML);
@@ -34,34 +33,25 @@ document.getElementById("endGame").addEventListener("click", function() {
 
 });
 document.getElementById("endGameForReal").addEventListener("click", function() {
-
-   let current=JSON.parse(window.localStorage.getItem("poolScoreStore"));
-   if (current==="null") {
-      window.localStorage.setItem("poolScoreStore", false);
-      window.localStorage.removeItem("poolScoreStore");
-   }
-   else {
-      current.status="ended";
-      window.localStorage.setItem("poolScoreStore", JSON.stringify(current));
-
-   }
-
-   let p1=document.getElementById("player1").value;
-
-   document.getElementById("player1").value=document.getElementById("player2").value;
-   document.getElementById("player2").value=p1;
-
-   if (document.fullscreenElement) {
-      document.exitFullscreen();
-   }
-   document.getElementById("finalScore").style.display="none";
-   document.getElementById("setup").style.display="flex";
-
+   endGame();
 });
 document.getElementById("cancelEndGame").addEventListener("click", function() {
    document.getElementById("finalScore").style.display="none";
    document.getElementById("score").style.display="flex";
 
+});
+document.getElementById("continueLoadedGame").addEventListener("click", function() {
+   let el = document.documentElement;
+   let rfs = el.requestFullscreen;
+   if(typeof rfs!="undefined" && rfs){
+     rfs.call(el);
+   }
+   document.getElementById("reload").style.display="none";
+   document.getElementById("score").style.display="flex";
+});
+document.getElementById("cancelLoadedGame").addEventListener("click", function() {
+   document.getElementById("reload").style.display="none";
+   endGame();
 });
 document.getElementById("player1Score").addEventListener("click", function() {
    updateBreak();
@@ -114,6 +104,29 @@ function incrementScore(player) {
    save();
 }
 
+function endGame() {
+   let current=JSON.parse(window.localStorage.getItem("poolScoreStore"));
+   if (current==="null") {
+      window.localStorage.setItem("poolScoreStore", false);
+      window.localStorage.removeItem("poolScoreStore");
+   }
+   else {
+      current.gameStatus="ended";
+      window.localStorage.setItem("poolScoreStore", JSON.stringify(current));
+
+   }
+   let p1=document.getElementById("player1").value;
+   document.getElementById("player1").value=document.getElementById("player2").value;
+   document.getElementById("player2").value=p1;
+
+   if (document.fullscreenElement) {
+      document.exitFullscreen();
+   }
+   document.getElementById("finalScore").style.display="none";
+   document.getElementById("setup").style.display="flex";
+
+}
+
 function save() {
    let currentGame={};
    currentGame.player1={};
@@ -123,7 +136,7 @@ function save() {
    currentGame.player2={};
    currentGame.player2.name=document.getElementById("player2").value;
    currentGame.player2.score=document.getElementById("player2Score").querySelector(".score").innerHTML;
-   currentGame.status="playing";
+   currentGame.gameStatus="playing";
    window.localStorage.setItem("poolScoreStore", JSON.stringify(currentGame));
 }
 
@@ -131,8 +144,8 @@ function load() {
    try {
       let current= JSON.parse(window.localStorage.getItem("poolScoreStore"));
       if (current !== null) {
+         if (current.gameStatus === "playing") {
 
-         if (current.status === "playing") {
             document.getElementById("player1").value=current.player1.name;
             document.getElementById("player2").value=current.player2.name;
 
@@ -146,12 +159,10 @@ function load() {
 
             p1.querySelector(".score").innerHTML=current.player1.score;
             p2.querySelector(".score").innerHTML=current.player2.score;
-            let rfs = el.requestFullscreen;
-            if(typeof rfs!="undefined" && rfs){
-              rfs.call(el);
-            }
+
             document.getElementById("setup").style.display="none";
-            document.getElementById("score").style.display="flex";
+            document.getElementById("reload").style.display="flex";
+
          }
          else {
             document.getElementById("player1").value=current.player2.name;

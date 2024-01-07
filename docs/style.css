@@ -66,7 +66,7 @@ html, body {
   font-weight: bold;
 }
 
-#finalScore {
+#finalScore, #reload {
   background: url("images/bg.jpg");
   background-repeat: repeat;
   position: absolute;
@@ -78,7 +78,7 @@ html, body {
   justify-content: center;
   align-items: center;
 }
-#finalScore > div {
+#finalScore > div, #reload > div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,22 +89,22 @@ html, body {
   border-radius: 20px;
   padding: 40px;
 }
-#finalScore > div .text {
+#finalScore > div .text, #reload > div .text {
   font-size: 4em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#finalScore > div #finalScoreText {
+#finalScore > div #finalScoreText, #reload > div #finalScoreText {
   font-weight: bold;
 }
-#finalScore > div .buttons {
+#finalScore > div .buttons, #reload > div .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
-#finalScore > div .buttons button {
+#finalScore > div .buttons button, #reload > div .buttons button {
   font-size: 2em;
 }
 
