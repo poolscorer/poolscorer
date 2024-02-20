@@ -1,8 +1,11 @@
+setInterval(function() {
+   document.getElementById("clock-inner").innerHTML = new Date().toLocaleTimeString();
+}, 500);
 document.getElementById("start").addEventListener("click", function() {
-   document.getElementById("turnToBreak").querySelector(".name").innerHTML=document.getElementById("player1").value;
+  // document.getElementById("turnToBreak").querySelector(".name").innerHTML=document.getElementById("player1").value;
    let p1=document.getElementById("player1Score");
    let p2=document.getElementById("player2Score");
-   
+
    p1.querySelector(".player-name").innerHTML=document.getElementById("player1").value;
    p2.querySelector(".player-name").innerHTML=document.getElementById("player2").value;
 
@@ -13,6 +16,9 @@ document.getElementById("start").addEventListener("click", function() {
    let toBreak=document.getElementById("turnToBreak").querySelector(".name");
    toBreak.dataset.player="player1";
    toBreak.innerHTML=document.getElementById("player1").value;
+   p1.classList.add("nextToBreak");
+   p2.classList.remove("nextToBreak");
+
    if (document.getElementById("fullScreen").checked) {
       let el = document.documentElement;
       let rfs = el.requestFullscreen;
@@ -82,6 +88,7 @@ for (let undo of undos) {
 function updateBreak() {
    let name=document.getElementById("turnToBreak").querySelector(".name");
    let curr=name.dataset.player;
+   let last=curr;
    if (curr==="player1") {
       curr="player2";
    }
@@ -90,6 +97,9 @@ function updateBreak() {
    }
    name.dataset.player=curr;
    name.innerHTML=document.getElementById(curr).value;
+   document.getElementById(curr+"Score").classList.add("nextToBreak");
+   document.getElementById(last+"Score").classList.remove("nextToBreak");
+
 }
 
 function decrementScore(player) {
@@ -108,6 +118,7 @@ function incrementScore(player) {
       score.style.opacity="0";
    }
    document.getElementById(player+"Score").querySelector(".undo").style.opacity="1";
+   setTimeout(function() {document.getElementById(player+"Score").querySelector(".undo").style.opacity="0";}, 120000)
    save();
 }
 
@@ -162,6 +173,10 @@ function load() {
             document.getElementById("turnToBreak").querySelector(".name").innerHTML=current.toBreak==="player1"?current.player1.name:current.player2.name;
             let p1=document.getElementById("player1Score");
             let p2=document.getElementById("player2Score");
+
+            document.getElementById(current.toBreak+"Score").classList.add("nextToBreak");
+            //document.getElementById(last+"Score").classList.remove("nextToBreak");
+
 
             p1.querySelector(".player-name").innerHTML=current.player1.name;
             p2.querySelector(".player-name").innerHTML=current.player2.name;

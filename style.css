@@ -63,8 +63,30 @@ html, body {
   border-radius: 0 0 10px 10px;
   padding: 3px 10px;
   color: #333;
+  font-size: 2em;
 }
 #turnToBreak > div .name {
+  font-weight: bold;
+}
+
+#clock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8em;
+  z-index: 2;
+}
+#clock > div {
+  position: relative;
+  background: #d5ded0;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 0 0 10px 0;
+  padding: 3px 10px 3px 5px;
+  color: #333;
+  font-size: 2em;
+}
+#clock > div .name {
   font-weight: bold;
 }
 
@@ -189,6 +211,9 @@ button {
     border-right: none;
     border-bottom: 2px solid black;
   }
+}
+.nextToBreak .player-name {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=style.css.map */
