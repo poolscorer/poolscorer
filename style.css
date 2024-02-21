@@ -180,6 +180,7 @@ button {
   align-items: center;
   color: whitesmoke;
   cursor: pointer;
+  padding-top: 2.8em;
 }
 #score .score-wrapper .player-name {
   font-size: 4em;
