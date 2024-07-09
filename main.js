@@ -1,6 +1,14 @@
 setInterval(function() {
    document.getElementById("clock-inner").innerHTML = new Date().toLocaleTimeString();
 }, 500);
+document.getElementById("switchPlayers").addEventListener("click", function() {
+   let p1=document.getElementById("player1");
+   let p2=document.getElementById("player2");
+   let tmp=p1.value;
+   p1.value=p2.value;
+   p2.value=tmp;
+
+});
 document.getElementById("start").addEventListener("click", function() {
   // document.getElementById("turnToBreak").querySelector(".name").innerHTML=document.getElementById("player1").value;
    let p1=document.getElementById("player1Score");
