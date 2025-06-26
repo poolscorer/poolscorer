@@ -107,6 +107,7 @@ function decrementScore(player) {
    let curr=parseInt(document.getElementById(player+"Score").querySelector(".score").innerHTML);
    if (curr===1) {
       document.getElementById(player+"Score").querySelector(".undo").classList.add("undo-hidden");
+      document.getElementById(player+"Score").querySelector(".balance").classList.add("balance-hidden");
    }
    document.getElementById(player+"Score").querySelector(".score").innerHTML=curr-1;
    save();
@@ -118,8 +119,13 @@ function incrementScore(player) {
    for (let score of scores) {
       score.classList.add("undo-hidden");
    }
+   let balances=document.getElementById("score").querySelectorAll(".balance");
+   for (let balance of balances) {
+      balance.classList.add("balance-hidden");
+   }
    document.getElementById(player+"Score").querySelector(".undo").classList.remove("undo-hidden");
-   setTimeout(function() {document.getElementById(player+"Score").querySelector(".undo").classList.add("undo-hidden");}, 600000)
+   document.getElementById(player+"Score").querySelector(".balance").classList.remove("balance-hidden");
+   setTimeout(function() {console.log("hide undo");document.getElementById(player+"Score").querySelector(".undo").classList.add("undo-hidden");document.getElementById(player+"Score").querySelector(".balance").classList.add("balance-hidden");}, 60000)
    save();
 }
 
