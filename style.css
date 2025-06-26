@@ -1,105 +1,122 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-}
+  height: 100%; }
 
 .github {
   position: absolute;
   top: 5px;
-  right: 5px;
-}
-.github img {
-  width: 1.5em;
-}
+  right: 5px; }
+  .github img {
+    width: 1.5em; }
+
+#qr-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  #qr-full #close-qr {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-weight: 900;
+    font-size: 4em; }
+  #qr-full img {
+    max-height: 80%;
+    max-width: 80%; }
+
+#clock-inner {
+  display: flex;
+  gap: .5em; }
 
 #setup {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-#setup h1 {
-  margin: 0.4em 0;
-}
-#setup .buttons-row {
-  margin-top: 10px;
-}
+  align-items: center; }
+  #setup h1 {
+    margin: 0.4em 0; }
+  #setup .buttons-row {
+    margin-top: 10px; }
 
 .form-wrapper .row {
   display: flex;
   align-items: center;
-  margin-bottom: 0.3em;
-}
-.form-wrapper .row label, .form-wrapper .row label > span {
-  min-width: 5.5em;
-}
-.form-wrapper .row label > span {
-  display: inline-block;
-}
-.form-wrapper .row input[type=checkbox] {
-  margin-left: 0;
-}
-.form-wrapper .row input[type=text] {
-  width: 8em;
-}
-.form-wrapper .row > span {
-  margin-left: 0.5em;
-}
+  margin-bottom: 0.3em; }
+  .form-wrapper .row label, .form-wrapper .row label > span {
+    min-width: 5.5em; }
+  .form-wrapper .row label > span {
+    display: inline-block; }
+  .form-wrapper .row input[type=checkbox] {
+    margin-left: 0; }
+  .form-wrapper .row input[type=text] {
+    width: 8em; }
+  .form-wrapper .row > span {
+    margin-left: 0.5em; }
 
 #turnToBreak {
+  display: none;
   position: absolute;
-  top: 0;
+  top: 4px;
   left: 50%;
-  z-index: 2;
-}
-#turnToBreak > div {
-  position: relative;
-  left: -50%;
-  background: #d5ded0;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 0 0 10px 10px;
-  padding: 3px 10px;
-  color: #333;
-  font-size: 2em;
-}
-#turnToBreak > div .name {
-  font-weight: bold;
-}
+  z-index: 2; }
+  #turnToBreak > div {
+    position: relative;
+    left: -50%;
+    color: #333;
+    font-size: 2em; }
+    #turnToBreak > div .name {
+      font-weight: bold; }
+
+.qr-wrapper {
+  padding-top: 1px;
+  margin-bottom: -1px;
+  padding-left: 5px; }
+
+#setup {
+  padding-top: 50px; }
+
+.playing {
+  display: flex;
+  flex-direction: column; }
+  .playing #clock {
+    display: block; }
+  .playing #turnToBreak {
+    display: block; }
 
 #clock {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8em;
-  z-index: 2;
-}
-#clock > div {
-  position: relative;
-  background: #d5ded0;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 0 0 10px 0;
-  padding: 3px 10px 3px 5px;
-  color: #333;
-  font-size: 2em;
-}
-#clock > div .name {
-  font-weight: bold;
-}
+  width: 100%;
+  cursor: pointer;
+  display: none;
+  z-index: 2; }
+  #clock > div {
+    position: relative;
+    background: #d5ded0;
+    border-bottom: 1px solid black;
+    padding: 3px 10px 0 5px;
+    color: #333;
+    font-size: 2em; }
+    #clock > div .name {
+      font-weight: bold; }
 
 .undo {
   width: 5em;
   height: 3em;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.undo button {
-  font-size: 1.4em;
-}
+  justify-content: center; }
+  .undo button {
+    font-size: 1.4em; }
+
+.hidden {
+  display: none !important; }
 
 #endGame {
   position: absolute;
@@ -109,11 +126,10 @@ html, body {
   z-index: 3;
   font-size: 2em;
   text-align: right;
-  padding: 5px 10px 10px 20px;
+  padding: 2px 10px 10px 20px;
   border-radius: 0 0 0 20px;
-  color: white;
-  font-weight: bold;
-}
+  color: #666;
+  font-weight: bold; }
 
 #finalScore, #reload {
   background: url("images/bg.jpg");
@@ -126,99 +142,91 @@ html, body {
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-#finalScore > div, #reload > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 4px solid #333;
-  border-radius: 20px;
-  padding: 40px;
-}
-#finalScore > div .text, #reload > div .text {
-  font-size: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-#finalScore > div #finalScoreText, #reload > div #finalScoreText {
-  font-weight: bold;
-}
-#finalScore > div .buttons, #reload > div .buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-#finalScore > div .buttons button, #reload > div .buttons button {
-  font-size: 2em;
-}
+  align-items: center; }
+  #finalScore > div, #reload > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 4px solid #333;
+    border-radius: 20px;
+    padding: 40px; }
+    #finalScore > div .text, #reload > div .text {
+      font-size: 4em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center; }
+    #finalScore > div #finalScoreText, #reload > div #finalScoreText {
+      font-weight: bold; }
+    #finalScore > div .buttons, #reload > div .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; }
+      #finalScore > div .buttons button, #reload > div .buttons button {
+        font-size: 2em; }
 
 button {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 #switchPlayers {
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 #score {
-  width: 100%;
-  height: 100%;
+  flex-grow: 1;
   background: url("images/bg.jpg");
   background-repeat: repeat;
   color: white;
-  display: flex;
-}
-#score .score-wrapper {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: whitesmoke;
-  cursor: pointer;
-  padding-top: 2.8em;
-}
-#score .score-wrapper .player-name {
-  font-size: 4em;
-}
-#score .score-wrapper .score {
-  font-size: 4em;
-}
-#score #player1Score {
-  border-right: 2px solid black;
-}
+  display: flex; }
+  #score .score-wrapper {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    cursor: pointer; }
+    #score .score-wrapper .player-name {
+      font-size: 4em; }
+    #score .score-wrapper .score {
+      font-size: 4em; }
+  #score #player1Score {
+    border-right: 2px solid black; }
 
 @media (max-width: 800px) {
   #finalScore > div .text, #reload > div .text {
-    font-size: 2.5em;
-  }
+    font-size: 2.5em; }
   #finalScore > div .buttons button, #reload > div .buttons button {
-    font-size: 1.4em;
-  }
-}
+    font-size: 1.4em; } }
 @media screen and (min-height: 80vw) {
   #score {
-    flex-direction: column;
-  }
-  #score .score-wrapper {
-    width: 100vw;
-    height: 50vh;
-  }
-  #score #player1Score {
-    border-right: none;
-    border-bottom: 2px solid black;
-  }
-}
+    flex-direction: column; }
+    #score .score-wrapper {
+      width: 100vw;
+      height: 50%; }
+    #score #player1Score {
+      border-right: none;
+      border-bottom: 2px solid black; }
+
+  #turnToBreak {
+    position: relative;
+    top: unset;
+    left: unset;
+    width: 100%; }
+    #turnToBreak > div {
+      background: #d5ded0;
+      border-top: 1px solid black;
+      padding: 3px 10px 3px 5px;
+      left: unset;
+      text-align: center; } }
 .nextToBreak .player-name {
-  text-decoration: underline;
-}
+  text-decoration: underline; }
+
+.undo-hidden {
+  opacity: 0; }
 
 /*# sourceMappingURL=style.css.map */

@@ -17,6 +17,7 @@
             <div class="row"><label for="fullScreen"><span>Full Screen</span><input id="fullScreen" type="checkbox" checked> (doesn't work on <a href="https://caniuse.com/fullscreen" target="_blank">iOS</a>)</label></div>
             <div class="row buttons-row"><button class="button" id="start">Start Game</button></div>
         </div>
+
         <div class="github"><a href="https://github.com/poolscorer/poolscorer" target="_blank" title="GitHub Repository"><img alt="GitHub Logo" src="images/github-mark.png"></a></div>
     </div>
     <div id="reload" style="display:none;">
@@ -25,14 +26,17 @@
             <div class="buttons"><button id="continueLoadedGame">Continue Game</button><button id="cancelLoadedGame">Cancel Game</button></div>
         </div>
     </div>
-    <div id="clock"><div id="clock-inner"></div></div>
+    <div id="clock"><div id="clock-inner"><div class="qr-wrapper"><a href="javascript:void(0)" class="qr"><img src="images/qrsmall.png" alt="QR Code (small)"></a></div><div id="time"></div>
+    </div></div>
+
     <div id="score" style="display:none;">
 
-        <div id="turnToBreak"><div><span class="name" data-player="player1"></span> to break</div></div>
         <div id="endGame">&times;</div>
-        <div id="player1Score" class="score-wrapper"><div class='player-name'></div><div class="score"></div><div class="undo" data-player="player1" style="opacity: 0;"><button class="button">Undo</button></div></div>
-        <div id="player2Score" class="score-wrapper"><div class='player-name'></div><div class="score"></div><div class="undo" data-player="player2" style="opacity: 0;"><button class="button">Undo</button></div></div>
+        <div id="player1Score" class="score-wrapper"><div class='player-name'></div><div class="score"></div><div class="undo undo-hidden" data-player="player1"><button class="button">Undo</button></div></div>
+        <div id="player2Score" class="score-wrapper"><div class='player-name'></div><div class="score"></div><div class="undo undo-hidden" data-player="player2"><button class="button">Undo</button></div></div>
     </div>
+    <div id="turnToBreak"><div>&middot; <span class="name" data-player="player1"></span> to break &middot;</div></div>
+
     <div id="finalScore" style="display: none;">
         <div>
             <div class='text'>Final Score</div>
@@ -40,6 +44,7 @@
             <div class="buttons"><button id="endGameForReal">End Game</button><button id="cancelEndGame">Keep Playing</button></div>
         </div>
     </div>
+    <div id="qr-full" class="hidden"><!--<div id="close-qr">X</div>--><img src='images/qr.png' alt='QR Code'></div>
 	<script src="main.js?v=11"></script>
   </body>
 </html>
