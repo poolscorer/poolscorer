@@ -1,7 +1,15 @@
+:root {
+  --sat: env(safe-area-inset-top);
+  --sar: env(safe-area-inset-right);
+  --sab: env(safe-area-inset-bottom);
+  /* THIS ONE GETS US THE HOME BAR HEIGHT */
+  --sal: env(safe-area-inset-left); }
+
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 .github {
   position: absolute;
@@ -70,7 +78,8 @@ html, body {
   .playing #clock {
     display: block; }
   .playing #turnToBreak {
-    display: block; }
+    display: block;
+    max-height: 1.1em; }
 
 #clock {
   width: 100%;
@@ -85,6 +94,9 @@ html, body {
     font-size: 2em; }
     #clock > div .name {
       font-weight: bold; }
+
+#clock.homebar {
+  padding-bottom: 20px; }
 
 .score-undo {
   display: flex;
@@ -208,6 +220,19 @@ button {
     font-size: 2.5em; }
   #finalScore > div .buttons button, #reload > div .buttons button {
     font-size: 1.4em; } }
+@media screen and (min-device-width: 1024px) {
+  body.playing {
+    flex-direction: column; }
+
+  #turnToBreak {
+    bottom: 0 !important;
+    top: unset !important;
+    max-height: 1.3em !important; }
+    #turnToBreak > div {
+      height: 1.2em !important; }
+
+  #score {
+    margin-top: 0 !important; } }
 @media screen and (min-height: 80vw) {
   #score {
     flex-direction: column;
@@ -220,12 +245,13 @@ button {
       border-bottom: 2px solid black; }
 
   #time {
-    flex-basis: 68%; }
+    flex-basis: 97%; }
 
   #turnToBreak {
     position: absolute;
     top: 0;
     left: 0;
+    padding: 0;
     width: 100%; }
     #turnToBreak > div {
       background: #d5ded0;
@@ -233,7 +259,17 @@ button {
       border-top: 1px solid #d5ded0;
       padding: 3px 10px 3px 5px;
       left: unset;
-      text-align: center; } }
+      text-align: center; }
+
+  #endGame {
+    flex-basis: 2%; }
+
+  .longtime #turnToBreak {
+    text-align: center; }
+  .longtime #time {
+    flex-basis: 97%; }
+  .longtime #endGame {
+    flex-basis: 2%; } }
 .nextToBreak .player-name {
   text-decoration: underline; }
 
