@@ -81,7 +81,7 @@ html, body {
 #turnToBreak {
   display: none;
   position: absolute;
-  top: 4px;
+  bottom: 0;
   left:50%;
 
   z-index: 2;
@@ -112,7 +112,7 @@ html, body {
 
 .playing {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   #clock {
     display: block;
   }
@@ -167,13 +167,13 @@ html, body {
 
 #endGame {
   position: absolute;
-  top:0;
+  bottom:0;
   right:0;
   cursor: pointer;
   z-index: 3;
   font-size: 2em;
   text-align: right;
-  padding: 2px 10px 10px 20px;
+  padding: 2px 10px 2px 20px;
   border-radius: 0 0 0 20px;
   color: #666;
   font-weight: bold;
@@ -181,7 +181,7 @@ html, body {
 #finalScore, #reload {
   background: url("images/bg.jpg");
   background-repeat: repeat;
-
+  z-index: 5;
   position: absolute;
   top:0;
   left:0;
