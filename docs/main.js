@@ -9,8 +9,10 @@ document.getElementById("switchPlayers").addEventListener("click", function() {
    p2.value=tmp;
 
 });
-document.getElementById("clock").addEventListener("click", function() {
-   document.getElementById("qr-full").classList.remove("hidden");
+document.getElementById("clock").addEventListener("click", function(e) {
+   if (e.target.id !== "endGame") {
+      document.getElementById("qr-full").classList.remove("hidden");
+   }
 });
 document.getElementById("qr-full").addEventListener("click", function() {
    document.getElementById("qr-full").classList.add("hidden");
@@ -44,6 +46,7 @@ document.getElementById("start").addEventListener("click", function() {
    document.getElementById("setup").style.display="none";
    document.getElementById("score").style.display="flex";
    save();
+   positionTurnToBreak();
 });
 document.getElementById("endGame").addEventListener("click", function() {
    let p1=document.getElementById("player1").value;
@@ -100,7 +103,7 @@ function updateBreak() {
    name.innerHTML=document.getElementById(curr).value;
    document.getElementById(curr+"Score").classList.add("nextToBreak");
    document.getElementById(last+"Score").classList.remove("nextToBreak");
-
+   positionTurnToBreak();
 }
 
 function decrementScore(player) {
@@ -202,7 +205,7 @@ function load() {
                }
             }
             document.getElementById("score").style.display="flex";
-
+            positionTurnToBreak();
          }
          else {
             document.getElementById("player1").value=current.player2.name;
@@ -214,6 +217,20 @@ function load() {
    }
    catch (e) {
 
+   }
+}
+
+function positionTurnToBreak() {
+   const d = new Date().toLocaleTimeString();
+   if (d.toLowerCase().includes("pm") || d.toLowerCase().includes("am")) {
+      document.getElementById("clock").classList.add("longtime");
+   }
+   const t=document.getElementById("turnToBreak");
+   if (t.offsetTop>0 && t.getBoundingClientRect().height>50) {
+      document.getElementById("clock").classList.add("cramped");
+   }
+   else {
+      document.getElementById("clock").classList.remove("cramped");
    }
 }
 
