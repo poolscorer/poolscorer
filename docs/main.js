@@ -1,5 +1,5 @@
 setInterval(function() {
-   document.getElementById("clock-inner").innerHTML = new Date().toLocaleTimeString();
+   document.getElementById("time").innerHTML = new Date().toLocaleTimeString();
 }, 500);
 document.getElementById("switchPlayers").addEventListener("click", function() {
    let p1=document.getElementById("player1");
@@ -9,11 +9,18 @@ document.getElementById("switchPlayers").addEventListener("click", function() {
    p2.value=tmp;
 
 });
+document.getElementById("clock").addEventListener("click", function() {
+   document.getElementById("qr-full").classList.remove("hidden");
+});
+document.getElementById("qr-full").addEventListener("click", function() {
+   document.getElementById("qr-full").classList.add("hidden");
+});
 document.getElementById("start").addEventListener("click", function() {
   // document.getElementById("turnToBreak").querySelector(".name").innerHTML=document.getElementById("player1").value;
    let p1=document.getElementById("player1Score");
    let p2=document.getElementById("player2Score");
 
+   document.body.classList.add("playing");
    p1.querySelector(".player-name").innerHTML=document.getElementById("player1").value;
    p2.querySelector(".player-name").innerHTML=document.getElementById("player2").value;
 
@@ -56,21 +63,7 @@ document.getElementById("cancelEndGame").addEventListener("click", function() {
    document.getElementById("score").style.display="flex";
 
 });
-document.getElementById("continueLoadedGame").addEventListener("click", function() {
-   if (document.getElementById("fullScreen").checked) {
-      let el = document.documentElement;
-      let rfs = el.requestFullscreen;
-      if(typeof rfs!="undefined" && rfs){
-        rfs.call(el);
-      }
-   }
-   document.getElementById("reload").style.display="none";
-   document.getElementById("score").style.display="flex";
-});
-document.getElementById("cancelLoadedGame").addEventListener("click", function() {
-   document.getElementById("reload").style.display="none";
-   endGame();
-});
+
 document.getElementById("player1Score").addEventListener("click", function() {
    updateBreak();
    incrementScore("player1");
@@ -84,7 +77,7 @@ document.getElementById("player2Score").addEventListener("click", function() {
 let undos=document.querySelectorAll(".undo");
 for (let undo of undos) {
    undo.addEventListener("click", function(e) {
-      console.log(e.target);
+
       e.stopPropagation();
       if (e.target.classList.contains("button")) {
          updateBreak();
@@ -113,7 +106,7 @@ function updateBreak() {
 function decrementScore(player) {
    let curr=parseInt(document.getElementById(player+"Score").querySelector(".score").innerHTML);
    if (curr===1) {
-      document.getElementById(player+"Score").querySelector(".undo").style.opacity="0";
+      document.getElementById(player+"Score").querySelector(".undo").classList.add("undo-hidden");
    }
    document.getElementById(player+"Score").querySelector(".score").innerHTML=curr-1;
    save();
@@ -123,14 +116,15 @@ function incrementScore(player) {
    document.getElementById(player+"Score").querySelector(".score").innerHTML=curr+1;
    let scores=document.getElementById("score").querySelectorAll(".undo");
    for (let score of scores) {
-      score.style.opacity="0";
+      score.classList.add("undo-hidden");
    }
-   document.getElementById(player+"Score").querySelector(".undo").style.opacity="1";
-   setTimeout(function() {document.getElementById(player+"Score").querySelector(".undo").style.opacity="0";}, 120000)
+   document.getElementById(player+"Score").querySelector(".undo").classList.remove("undo-hidden");
+   setTimeout(function() {document.getElementById(player+"Score").querySelector(".undo").classList.add("undo-hidden");}, 600000)
    save();
 }
 
 function endGame() {
+   document.body.classList.remove("playing");
    let current=JSON.parse(window.localStorage.getItem("poolScoreStore"));
    if (current==="null") {
       window.localStorage.setItem("poolScoreStore", false);
@@ -193,7 +187,15 @@ function load() {
             p2.querySelector(".score").innerHTML=current.player2.score;
 
             document.getElementById("setup").style.display="none";
-            document.getElementById("reload").style.display="flex";
+            document.body.classList.add("playing");
+            if (document.getElementById("fullScreen").checked) {
+               let el = document.documentElement;
+               let rfs = el.requestFullscreen;
+               if(typeof rfs!="undefined" && rfs){
+                 rfs.call(el);
+               }
+            }
+            document.getElementById("score").style.display="flex";
 
          }
          else {
