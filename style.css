@@ -106,13 +106,19 @@ html, body {
     #clock > div .name {
       font-weight: bold; }
 
-.undo {
+.score-undo {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  align-items: center; }
+
+.undo, .balance {
   width: 5em;
   height: 3em;
   display: flex;
   align-items: center;
   justify-content: center; }
-  .undo button {
+  .undo button, .balance button {
     font-size: 1.4em; }
 
 .hidden {
@@ -226,7 +232,7 @@ button {
 .nextToBreak .player-name {
   text-decoration: underline; }
 
-.undo-hidden {
-  opacity: 0; }
+.undo-hidden, .balance-hidden {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */
