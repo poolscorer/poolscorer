@@ -40,9 +40,15 @@ html, body {
     max-height: 80%;
     max-width: 80%; }
 
-#clock-inner {
+#qr-clock {
   display: flex;
-  gap: 2px; }
+  gap: 4px; }
+
+#clock-inner {
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr);
+  gap: 10px;
+  width: 100%; }
 
 #setup {
   padding: 10px;
@@ -78,8 +84,7 @@ html, body {
   .playing #clock {
     display: block; }
   .playing #turnToBreak {
-    display: block;
-    max-height: 1.1em; }
+    display: block; }
 
 #clock {
   width: 100%;
@@ -87,8 +92,9 @@ html, body {
   display: none;
   z-index: 2; }
   #clock > div {
+    box-sizing: border-box;
     background: #d5ded0;
-    border-bottom: 1px solid #d5ded0;
+    border-top: 1px solid #333333;
     padding: 3px 10px 0 5px;
     color: #333;
     font-size: 2em; }
@@ -118,35 +124,25 @@ html, body {
 
 #turnToBreak {
   flex-grow: 1;
-  flex-basis: 46%;
   text-align: center;
   padding: 0 5px; }
 
 .qr-wrapper {
   padding-top: 1px;
   margin-bottom: -1px;
-  padding-left: 0;
-  flex-basis: 1%; }
+  padding-left: 0; }
 
 #time {
-  flex-basis: 26%;
   padding-left: 2px; }
 
 #endGame {
   cursor: pointer;
   z-index: 3;
-  text-align: right;
+  float: right;
   border-radius: 0 0 0 20px;
+  padding-left: 10px;
   color: #666;
-  font-weight: bold;
-  flex-basis: 27%; }
-
-.longtime #turnToBreak {
-  text-align: center; }
-.longtime #time {
-  flex-basis: 30%; }
-.longtime #endGame {
-  flex-basis: 32%; }
+  font-weight: bold; }
 
 #finalScore, #reload {
   background: url("images/bg.jpg");
@@ -209,7 +205,9 @@ button {
     color: whitesmoke;
     cursor: pointer; }
     #score .score-wrapper .player-name {
-      font-size: 4em; }
+      font-size: 4em;
+      padding: 0 5px;
+      box-sizing: border-box; }
     #score .score-wrapper .score {
       font-size: 4em; }
   #score #player1Score {
@@ -226,10 +224,7 @@ button {
 
   #turnToBreak {
     bottom: 0 !important;
-    top: unset !important;
-    max-height: 1.3em !important; }
-    #turnToBreak > div {
-      height: 1.2em !important; }
+    top: unset !important; }
 
   #score {
     margin-top: 0 !important; } }
@@ -244,8 +239,8 @@ button {
       border-right: none;
       border-bottom: 2px solid black; }
 
-  #time {
-    flex-basis: 97%; }
+  #clock-inner {
+    grid-template-columns: minmax(max-content, auto) minmax(max-content, 1fr); }
 
   #turnToBreak {
     position: absolute;
@@ -255,31 +250,14 @@ button {
     width: 100%; }
     #turnToBreak > div {
       background: #d5ded0;
-      height: 1.1em;
       border-top: 1px solid #d5ded0;
       padding: 3px 10px 3px 5px;
       left: unset;
-      text-align: center; }
-
-  #endGame {
-    flex-basis: 2%; }
-
-  .longtime #turnToBreak {
-    text-align: center; }
-  .longtime #time {
-    flex-basis: 97%; }
-  .longtime #endGame {
-    flex-basis: 2%; } }
+      text-align: center; } }
 .nextToBreak .player-name {
   text-decoration: underline; }
 
 .undo-hidden, .balance-hidden {
   display: none; }
-
-.cramped #turnToBreak {
-  flex-basis: 68%;
-  text-align: left; }
-.cramped #endGame {
-  flex-basis: 2%; }
 
 /*# sourceMappingURL=style.css.map */
