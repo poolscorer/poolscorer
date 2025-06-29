@@ -221,23 +221,10 @@ function load() {
     }
 }
 
-function positionTurnToBreak(doubleCheck = true) {
+function positionTurnToBreak() {
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            const d = new Date().toLocaleTimeString();
-            if (d.toLowerCase().includes("pm") || d.toLowerCase().includes("am")) {
-                document.getElementById("clock").classList.add("longtime");
-            }
-            const t = document.querySelector("#turnToBreak > div");
 
-            if (t.offsetTop > 0 && t.getBoundingClientRect().height > 50) {
-                document.getElementById("clock").classList.add("cramped");
-            } else {
-                document.getElementById("clock").classList.remove("cramped");
-                if (doubleCheck) {
-                    positionTurnToBreak(false);
-                }
-            }
             let sab = getComputedStyle(document.documentElement).getPropertyValue("--sab");
             sab = parseInt(sab.substring(0, sab.length-2));
             if (sab===0) {

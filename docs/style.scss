@@ -49,10 +49,16 @@ html, body {
   }
 
 }
+#qr-clock {
+  display: flex;
+  gap: 4px;
+}
 
 #clock-inner {
-  display: flex;
-  gap: 2px;
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr);
+  gap: 10px;
+  width: 100%;
 }
 
 #setup {
@@ -114,7 +120,7 @@ html, body {
 
   #turnToBreak {
     display: block;
-    max-height: 1.1em;
+
   }
 }
 
@@ -127,9 +133,9 @@ html, body {
   z-index: 2;
 
   > div {
-
+    box-sizing: border-box;
     background: #d5ded0;
-    border-bottom: 1px solid #d5ded0;
+    border-top: 1px solid #333333;
     padding: 3px 10px 0 5px;
     color: #333;
     font-size: 2em;
@@ -171,7 +177,7 @@ html, body {
 
 #turnToBreak {
   flex-grow: 1;
-  flex-basis: 46%;
+
   text-align: center;
   padding: 0 5px;
 }
@@ -180,39 +186,27 @@ html, body {
   padding-top: 1px;
   margin-bottom: -1px;
   padding-left: 0;
-  flex-basis: 1%;
+
 }
 
 #time {
-  flex-basis: 26%;
+
   padding-left: 2px;
 }
 
 #endGame {
   cursor: pointer;
   z-index: 3;
-  text-align: right;
+  float: right;
   border-radius: 0 0 0 20px;
+  padding-left: 10px;
+
   color: #666;
   font-weight: bold;
-  flex-basis: 27%;
+
 }
 
-.longtime {
-  #turnToBreak {
 
-    text-align: center;
-  }
-
-  #time {
-    flex-basis: 30%;
-  }
-
-  #endGame {
-
-    flex-basis: 32%;
-  }
-}
 
 #finalScore, #reload {
   background: url("images/bg.jpg");
@@ -293,6 +287,8 @@ button {
 
     .player-name {
       font-size: 4em;
+      padding: 0 5px;
+      box-sizing: border-box;
     }
 
     .score {
@@ -325,14 +321,12 @@ button {
   #turnToBreak {
     bottom: 0 !important;
     top: unset !important;
-    max-height: 1.3em !important;
-    > div {
-      height: 1.2em !important;
-    }
+
   }
   #score {
     margin-top: 0 !important;
   }
+
 }
 
 @media screen and (min-height: 80vw) {
@@ -350,10 +344,11 @@ button {
       border-bottom: 2px solid black;
     }
   }
-
-  #time {
-    flex-basis: 97%;
+    #clock-inner {
+    grid-template-columns: minmax(max-content, auto) minmax(max-content, 1fr);
   }
+
+
   #turnToBreak {
     position: absolute;
     top: 0;
@@ -362,7 +357,7 @@ button {
     width: 100%;
     > div {
       background: #d5ded0;
-      height: 1.1em;
+
       border-top: 1px solid #d5ded0;
       padding: 3px 10px 3px 5px;
       left: unset;
@@ -370,25 +365,6 @@ button {
 
     }
   }
-  #endGame {
-    flex-basis: 2%;
-  }
-
-  .longtime {
-  #turnToBreak {
-
-    text-align: center;
-  }
-
-  #time {
-    flex-basis: 97%;
-  }
-
-  #endGame {
-
-    flex-basis: 2%;
-  }
-}
 
 }
 
@@ -400,13 +376,4 @@ button {
   display: none;
 }
 
-.cramped {
-  #turnToBreak {
-    flex-basis: 68%;
-    text-align: left;
-  }
 
-  #endGame {
-    flex-basis: 2%;
-  }
-}
