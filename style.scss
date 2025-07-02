@@ -1,0 +1,379 @@
+:root {
+    --sat: env(safe-area-inset-top);
+    --sar: env(safe-area-inset-right);
+    --sab: env(safe-area-inset-bottom); /* THIS ONE GETS US THE HOME BAR HEIGHT */
+    --sal: env(safe-area-inset-left);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.github {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  img {
+    width: 1.5em;
+  }
+}
+
+#qr-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  #close-qr {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-weight: 900;
+    font-size: 4em;
+  }
+
+  img {
+    max-height: 80%;
+    max-width: 80%;
+  }
+
+}
+#qr-clock {
+  display: flex;
+  gap: 4px;
+}
+
+#clock-inner {
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+#setup {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin: 0.4em 0;
+  }
+
+  .buttons-row {
+    margin-top: 10px;
+
+  }
+}
+
+.form-wrapper {
+  .row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3em;
+
+    label, label > span {
+      min-width: 5.5em;
+    }
+
+    label > span {
+      display: inline-block;
+    }
+
+    input[type=checkbox] {
+      margin-left: 0;
+    }
+
+    input[type=text] {
+      width: 8em;
+    }
+
+    > span {
+      margin-left: 0.5em;
+    }
+  }
+}
+
+
+#setup {
+  padding-top: 50px;
+}
+
+.playing {
+  display: flex;
+  flex-direction: column-reverse;
+
+  #clock {
+    display: block;
+  }
+
+  #turnToBreak {
+    display: block;
+
+  }
+}
+
+
+#clock {
+  width: 100%;
+  cursor: pointer;
+  display: none;
+
+  z-index: 2;
+
+  > div {
+    box-sizing: border-box;
+    background: #d5ded0;
+    border-top: 1px solid #333333;
+    padding: 3px 10px 0 5px;
+    color: #333;
+    font-size: 2em;
+
+    .name {
+      font-weight: bold;
+    }
+  }
+}
+#clock.homebar {
+  padding-bottom: 20px;
+}
+
+.score-undo {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  align-items: center;
+}
+
+.undo, .balance {
+  width: 5em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    font-size: 1.4em;
+  }
+
+
+}
+
+.hidden {
+  display: none !important;
+
+}
+
+#turnToBreak {
+  flex-grow: 1;
+
+  text-align: center;
+  padding: 0 5px;
+}
+
+.qr-wrapper {
+  padding-top: 1px;
+  margin-bottom: -1px;
+  padding-left: 0;
+
+}
+
+#time {
+
+  padding-left: 2px;
+}
+
+#endGame {
+  cursor: pointer;
+  z-index: 3;
+  float: right;
+  border-radius: 0 0 0 20px;
+  padding-left: 10px;
+
+  color: #666;
+  font-weight: bold;
+
+}
+
+
+
+#finalScore, #reload {
+  background: url("images/bg.jpg");
+  background-repeat: repeat;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 4px solid #333;
+    border-radius: 20px;
+    padding: 40px;
+
+    .text {
+      font-size: 4em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #finalScoreText {
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      button {
+        font-size: 2em;
+      }
+    }
+  }
+
+}
+
+button {
+  cursor: pointer;
+}
+
+#switchPlayers {
+  text-decoration: none;
+}
+
+#score {
+  flex-grow: 1;
+  background: url("images/bg.jpg");
+  background-repeat: repeat;
+  color: white;
+  display: flex;
+
+  .score-wrapper {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    cursor: pointer;
+    //padding-top: 2.8em;
+
+    .player-name {
+      font-size: 4em;
+      padding: 0 5px;
+      box-sizing: border-box;
+    }
+
+    .score {
+      font-size: 4em;
+    }
+  }
+
+  #player1Score {
+    border-right: 2px solid black;
+  }
+}
+
+@media (max-width: 800px) {
+  #finalScore > div, #reload > div {
+    .text {
+      font-size: 2.5em;
+    }
+
+    .buttons button {
+      font-size: 1.4em;
+    }
+  }
+}
+
+
+@media screen and (min-device-width: 1024px) {
+  body.playing {
+    flex-direction: column;
+  }
+  #turnToBreak {
+    bottom: 0 !important;
+    top: unset !important;
+
+  }
+  #score {
+    margin-top: 0 !important;
+  }
+
+}
+
+@media screen and (min-height: 80vw) {
+  #score {
+    flex-direction: column;
+    margin-top: 1.1em;
+
+    .score-wrapper {
+      width: 100vw;
+      height: 50%;
+    }
+
+    #player1Score {
+      border-right: none;
+      border-bottom: 2px solid black;
+    }
+  }
+    #clock-inner {
+    grid-template-columns: minmax(max-content, auto) minmax(max-content, 1fr);
+  }
+
+
+  #turnToBreak {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    > div {
+      background: #d5ded0;
+
+      border-top: 1px solid #d5ded0;
+      padding: 3px 10px 3px 5px;
+      left: unset;
+      text-align: center;
+
+    }
+  }
+
+}
+
+.nextToBreak .player-name {
+  text-decoration: underline;
+}
+
+.undo-hidden, .balance-hidden {
+  display: none;
+}
+
+
