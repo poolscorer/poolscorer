@@ -85,6 +85,7 @@ for (let undo of undos) {
         if (e.target.classList.contains("button")) {
             updateBreak();
             decrementScore(this.dataset.player);
+            e.target.closest(".undo").classList.add("undo-hidden");
         }
     });
 }

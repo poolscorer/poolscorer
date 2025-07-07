@@ -189,6 +189,10 @@ button {
 #switchPlayers {
   text-decoration: none; }
 
+.help {
+  margin-top: 20px;
+  font-style: italic; }
+
 #score {
   flex-grow: 1;
   background: url("images/bg.jpg");
