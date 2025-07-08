@@ -28,7 +28,7 @@ html, body {
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: space-around; }
   #qr-full #close-qr {
     position: absolute;
     top: 10px;
@@ -37,8 +37,29 @@ html, body {
     font-weight: 900;
     font-size: 4em; }
   #qr-full img {
+    max-height: 100%;
+    max-width: 100%; }
+  #qr-full > div {
     max-height: 80%;
-    max-width: 80%; }
+    max-width: 50%;
+    height: 80%;
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 4em;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif; }
+  #qr-full #clockFullQR {
+    font-size: 1.2em;
+    text-align: right;
+    padding-right: 20px; }
+  #qr-full #turnToBreakFullQR {
+    padding-right: 20px;
+    text-align: right; }
+  #qr-full #clockBreakFullQR {
+    flex-direction: column;
+    justify-content: space-between; }
 
 #qr-clock {
   display: flex;

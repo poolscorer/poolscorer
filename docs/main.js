@@ -1,5 +1,6 @@
 setInterval(function () {
     document.getElementById("time").innerHTML = new Date().toLocaleTimeString();
+    document.getElementById("clockFullQR").innerHTML = new Date().toLocaleTimeString();
 }, 500);
 document.getElementById("switchPlayers").addEventListener("click", function () {
     let p1 = document.getElementById("player1");
@@ -223,6 +224,7 @@ function load() {
 }
 
 function positionTurnToBreak() {
+    document.querySelector("#turnToBreakFullQR .name").innerHTML = document.querySelector("#turnToBreak .name").innerHTML;
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
 
