@@ -271,7 +271,13 @@ button {
   margin-top: 20px;
   font-style: italic;
 }
+.racks {
+  font-family: Verdana, Geneva, sans-serif;
+  border-top: 1px solid #bbb;
+  padding-top: 10px;
+  margin-top: 10px;
 
+}
 #score {
   flex-grow: 1;
   background: url("images/bg.jpg");
