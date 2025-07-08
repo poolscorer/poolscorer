@@ -22,7 +22,7 @@ html, body {
   }
 }
 
-.longtime #qr-full  > div {
+.longtime #qr-full > div {
   font-size: 7vw;
 }
 
@@ -381,9 +381,10 @@ button {
 }
 
 @media screen and (min-height: 80vw) {
-#qr-full {
+  #qr-full {
     flex-direction: column;
     gap: 20px;
+
     > div {
       max-height: 45%;
       height: 45%;
@@ -392,10 +393,15 @@ button {
       font-size: 18vw;
 
     }
+
+    #clockFullQR, #turnToBreakFullQR  {
+      text-align: center;
+      padding:0 5px;
+    }
   }
-  .longtime #qr-full  > div {
-  font-size: 14vw;
-}
+  .longtime #qr-full > div {
+    font-size: 14vw;
+  }
   #score {
     flex-direction: column;
     margin-top: 1.1em;

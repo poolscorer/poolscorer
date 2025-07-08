@@ -271,6 +271,9 @@ button {
       max-width: 90%;
       width: 90%;
       font-size: 18vw; }
+    #qr-full #clockFullQR, #qr-full #turnToBreakFullQR {
+      text-align: center;
+      padding: 0 5px; }
 
   .longtime #qr-full > div {
     font-size: 14vw; }
