@@ -251,5 +251,7 @@ else {
       positionTurnToBreak();
     }, false);
 }
-
+if (new Date().toLocaleTimeString().match(/(am)|(pm)/i)) {
+    document.body.classList.add("longtime");
+}
 load();
